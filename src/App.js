@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
+import Gallery from './components/Gallery'
+import SearchBar from './components/SeachBar'
+import { DataContext } from './context/DataContext'
+
+const App = () => {
+    let [searchTerm, setSearchTerm] = useState('')
+    let [data, setData] = useState([])
+    let [message, setMessage] = useState('Search for Music!')
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SearchBar handleSearch={handleSearch} />
+        {message}
+        <DataContext.Provider value={data} >
+            <Gallery />
+        </DataContext.Provider>
     </div>
-  );
+)
+}
 }
 
+
 export default App;
+
+
+
+    
+
+   
+
+    
